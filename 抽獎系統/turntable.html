@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>即時抽獎</title>
+    <link rel="stylesheet" href="styles6.css">
+</head>
+<body>
+    <header>
+        <h1>即時抽獎</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">主頁</a></li>
+            <li><a href="realtime-lottery.html" class="active">即時抽獎</a></li>
+            <li><a href="data-lottery.html">資料抽獎</a></li>
+            <li><a href="turntable.html">轉輪盤</a></li>
+            <li><a href="dice.html">幸運骰子</a></li>
+            <li><a href="dice2.html">擲骰子</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="lottery-container">
+            <div class="wheel-section">
+                <canvas id="wheelCanvas" width="400" height="400"></canvas>
+                <!-- 指針會被添加到這裡 -->
+                <button id="spinButton" class="spin-button">旋轉</button>
+            </div>
+            
+
+            <div class="input-section">
+                <h3>輸入抽獎名單:</h3>
+                <textarea id="name-list" placeholder="每行一筆，輸入名稱或資料"></textarea>
+                <div class="button-group">
+                    <button class="import-button name-import-button">匯入資料</button>
+                    <button id="generate-numbers" class="import-button">產生編號</button>
+                </div>
+                <p id="name-count">目前人數: 0</p>
+                <div id="resultText"></div>
+            </div>
+        </div>
+    </main>
+    <script src="script6.js"></script>
+</body>
+</html>

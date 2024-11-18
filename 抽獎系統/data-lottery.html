@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>資料抽獎</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <header>
+        <h1>資料抽獎</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">主頁</a></li>
+            <li><a href="realtime-lottery.html">即時抽獎</a></li>
+            <li><a href="data-lottery.html" class="active">資料抽獎</a></li>
+            <li><a href="turntable.html">轉輪盤</a></li>
+            <li><a href="dice.html">幸運骰子</a></li>
+            <li><a href="dice2.html">擲骰子</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="draw-container">
+            <div class="draw-section">
+                <h3>獎項內容:</h3>
+                <textarea id="prize-input" placeholder="輸入獎品名稱,數量，例如：行李箱,2"></textarea>
+                <div class="button-group">
+                    <button class="import-button prize-import-button" title="匯入txt或csv文字檔">匯入資料</button>
+                </div>
+                <p id="prize-count">目前獎項數: 0</p>
+            </div>
+            
+            <div class="draw-section">
+                <h3>抽獎名單:</h3>                
+                
+                <div class="name-input-container">
+                    <textarea id="name-list" placeholder="每行一筆資料，可複製Excel內容貼上，也可使用下方按鈕，匯入資料或產生流水編號"></textarea>
+                </div>
+                <div class="button-group">
+                    <button class="import-button name-import-button" title="匯入txt或csv文字檔">匯入資料</button>
+                    <button id="generate-numbers" class="import-button" title="輸入編號範圍，產生編號在抽獎名單">產生編號</button>
+                    <input type="file" id="file-input" style="display:none">
+                </div>
+                <p id="name-count">目前人數: 0</p>
+
+            </div>
+        </div>
+        <div class="action-buttons">
+            <button class="clear-button">清除資料</button>
+            <button class="start-button">開始抽獎</button>
+        </div>
+    </main>
+    <script src="script2.js"></script>
+</body>
+</html>
