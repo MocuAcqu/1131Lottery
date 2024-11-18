@@ -11,7 +11,7 @@ body {
 }
 
 header {
-    background-image: url('_d90697b9-8fdf-4a3e-b32d-454a99d5edd2.jpg'); /* 替換為實際的背景圖片路徑 */
+    background-image: url('./背景.jpg'); /* 替換為實際的背景圖片路徑 */
     background-size: cover;
     background-position: center;
     padding: 60px 0;
