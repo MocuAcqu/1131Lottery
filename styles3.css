@@ -1,3 +1,4 @@
+/* 基本樣式 */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +12,7 @@ body {
 }
 
 header {
-    background-image: url('./背景.jpg');
+    background-image: url('_d90697b9-8fdf-4a3e-b32d-454a99d5edd2.jpg');
     background-size: cover;
     background-position: center;
     padding: 60px 0;
@@ -50,19 +51,101 @@ nav ul li a.active {
     color: rgb(255, 237, 147);
 }
 
-main {
-    padding: 20px;
-}
-
-.action-buttons {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+/* 主容器 */
+.main-container {
+    padding: 35px;
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.clear-button, .start-button {
+.input-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.qr-section {
+    width: 28%; /* 調整QR code區塊寬度 */
+    background-color: #f9f9f9;
+    border: 2px solid #b5b5b5;
+    border-radius: 5%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding-top: 25px;
+}
+
+.content-section {
+    width: 75%; /* 調整右側區塊寬度 */
+    display: flex; /* 開啟 Flexbox */
+    justify-content: space-between; /* 兩個區塊左右對齊 */
+    flex-wrap: wraps;
+}
+
+.qr-image {
+    width: 72%;
+    height: 72%;
+    object-fit: contain;
+    margin-top: 15px;
+}
+
+textarea {
+    width: 95%;
+    height: 220px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    resize: none;
+    font-size: 18px;
+    margin: 5px;
+    background-color: #fcfcfc;
+}
+
+.prize-import-button {
+    margin-top: 5px;
+    margin-bottom: 4px;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #8bc34a;
+}
+
+.name-import-button{
+    margin-top: 5px;
+    margin-bottom: 4px;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #8bc34a;
+}
+
+#fetch-name-button{
+    margin-top: 5px;
+    margin-bottom: 4px;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #8bc34a;
+}
+
+#fetch-name-button:hover {
+    opacity: 0.8;
+}
+
+.name-import-button:hover {
+    opacity: 0.8;
+}
+
+.prize-import-button:hover {
+    opacity: 0.8;
+}
+
+.clear-button {
     background-color: #c44b26;
     color: white;
     border: none;
@@ -74,14 +157,62 @@ main {
     transition: background-color 0.3s;
 }
 
-.start-button {
+.start-lottery-button {
     background-color: #57ae5a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.start-lottery-button:hover {
+    background-color: #1a541d;
 }
 
 .clear-button:hover {
     background-color: #6a270e;
 }
 
-.start-button:hover {
-    background-color: #1a541d;
+.action-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+
+/* 讓輸入框內的文件選擇按鈕隱藏 */
+input[type="file"] {
+    display: none;
+}
+
+.prize-section {
+    width: 49%; /* 設定獎項區塊寬度 */
+    border: 2px solid #b5b5b5; /* 可選：增加邊框，讓區塊更清晰 */
+    padding: 10px;
+    border-radius: 5%;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.name-section {
+    width: 49%; /* 設定名單區塊寬度 */
+    border: 2px solid #b5b5b5; /* 可選：增加邊框，讓區塊更清晰 */
+    padding: 10px;
+    border-radius: 5%;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.prize-section h3{
+    font-size: 24px;
+}
+
+.name-section h3{
+    font-size: 24px;
 }

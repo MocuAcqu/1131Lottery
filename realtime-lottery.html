@@ -20,12 +20,38 @@
             <li><a href="dice2.html">擲骰子</a></li>
         </ul>
     </nav>
-    <main>
-        <div class="action-buttons">
-            <button class="clear-button">清除資料</button>
-            <button class="start-button">開始抽獎</button>
+    <main class="main-container">
+        <div class="input-container">
+            <div class="qr-section">
+                <h2>請掃描QR Code登入資料</h2>
+                <img src="即時抽獎登入網頁.png" alt="QR Code" class="qr-image">
+            </div>
+            
+            <div class="content-section">
+                <div class="prize-section">
+                    <h3>獎項內容</h3>
+                    <textarea id="prize-input" placeholder="獎品名稱,數量"></textarea>
+                    <button class="prize-import-button">匯入獎項</button>
+                    <p id="prize-count">目前獎項數: 0</p>
+                </div>
+                <div class="name-section">
+                    <h3>抽獎名單</h3>
+                    <textarea id="name-list" placeholder="輸入抽獎名單，每行一個名字"></textarea>
+                    <button class="name-import-button">匯入名單</button>
+                    <button id="fetch-name-button">從資料庫匯入名單</button>
+                    <p id="name-count">目前人數: 0</p>
+                </div>
+            </div>
         </div>
+        <div id="result-display"></div>
     </main>
-    <script src="script3.js"></script>
+    <div class="action-buttons">
+        <button class="clear-button">清除資料</button>
+        <!-- 在prize-import-button和name-import-button中加上 file input -->
+        <input type="file" id="prize-file" accept=".csv, .txt" style="display:none">
+        <input type="file" id="name-file" accept=".csv, .txt" style="display:none">               
+        <button class="start-lottery-button">開始抽獎</button>
+    </div>
+    <script type="module" src="script3.js"></script>
 </body>
 </html>
