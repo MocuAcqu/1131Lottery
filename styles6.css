@@ -70,27 +70,6 @@ main {
     align-items: center;
 }
 
-#wheelCanvas {
-    border: 2px solid #ddd;
-    border-radius: 50%;
-    background-color: #fff;
-}
-
-.spin-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.spin-button:hover {
-    background-color: #388e3c;
-}
 
 .input-section {
     text-align: left;
@@ -125,7 +104,7 @@ main {
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -138,4 +117,45 @@ main {
     margin-top: 10px;
     font-size: 14px;
     color: #555;
+}
+/* 指針樣式 */
+/* 設置指針的樣式 */
+.pointer {
+    position: absolute;
+    top: 200px;  /* 保持指針的位置不變 */
+    left: 40.5%;   /* 保持指針的水平位置設置為畫布中心 */
+    transform: translateX(-50%);  /* 使指針居中對齊 */
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;   /* 左邊透明，稍微增大底邊 */
+    border-right: 15px solid transparent;  /* 右邊透明，稍微增大底邊 */
+    border-top: 30px solid #008cba;        /* 藍色倒三角形指針，稍微增大高度 */
+    z-index: 10;  /* 確保指針位於轉盤的上方 */
+}
+
+
+
+/* 轉盤樣式 */
+#wheelCanvas {
+    position: relative;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    z-index: 1;  /* 確保轉盤在指針下方 */
+}
+
+/* 旋轉按鈕樣式 */
+.spin-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.spin-button:hover {
+    background-color: #45a049;
 }
