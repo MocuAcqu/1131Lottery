@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>即時抽獎</title>
+    <title>轉輪盤</title>
     <link rel="stylesheet" href="styles6.css">
 </head>
 <body>
     <header>
-        <h1>即時抽獎</h1>
+        <h1>轉輪盤</h1>
     </header>
     <nav>
         <ul>
@@ -23,8 +23,8 @@
     <main>
         <div class="lottery-container">
             <div class="wheel-section">
+                <div class="pointer"></div>
                 <canvas id="wheelCanvas" width="400" height="400"></canvas>
-                <!-- 指針會被添加到這裡 -->
                 <button id="spinButton" class="spin-button">旋轉</button>
             </div>
             
@@ -35,6 +35,7 @@
                 <div class="button-group">
                     <button class="import-button name-import-button">匯入資料</button>
                     <button id="generate-numbers" class="import-button">產生編號</button>
+                    <button id="clear-data" class="import-button">清除資料</button>
                 </div>
                 <p id="name-count">目前人數: 0</p>
                 <div id="resultText"></div>
