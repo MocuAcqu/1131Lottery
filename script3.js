@@ -1,11 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
 
-// 替換成你的 Supabase 資訊
-const SUPABASE_URL = "https://dqcwygutsfiepcbathqm.supabase.co"; // 替換為你的 Project URL
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxY3d5Z3V0c2ZpZXBjYmF0aHFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEwNzYxODksImV4cCI6MjA0NjY1MjE4OX0.EcmYcKIUZGXOc3PP0ViL58olwi_tCYmFRPlwVe58IAk"; // 替換為你的 anon public key
-const supabaseClient = supabaseClient.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.addEventListener("DOMContentLoaded", () => {    
+        
     const prizeInput = document.getElementById("prize-input");
     const prizeCount = document.getElementById("prize-count");
     const nameList = document.getElementById("name-list");
@@ -15,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const clearButton = document.querySelector(".clear-button");
     const startLotteryButton = document.querySelector(".start-lottery-button");
     const resultDisplay = document.getElementById("result-display");
-    const fetchNameButton = document.getElementById("fetch-name-button");
+    
 
     // 讓匯入按鈕打開文件管理器
     prizeImportButton.addEventListener("click", () => document.getElementById("prize-file").click());
@@ -87,31 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
         resultDisplay.textContent = result;
     });
 
-    async function fetchParticipants() {
-        try {
-            // 從 Supabase 資料庫中獲取抽獎者資料
-            const { data, error } = await supabasesupabaseClient.from('users').select('name');
-            if (error) throw error;
     
-            // 將取得的名字匯入到名單輸入框
-            const nameList = document.getElementById("name-list");
-            nameList.value = data.map(user => user.name).join("\n");
-    
-            // 更新名單人數
-            updateNameCount();
-        } catch (err) {
-            console.error("Error fetching participants:", err.message);
-            alert("無法載入抽獎名單，請稍後再試！");
-        }
-    }
-    
-    document.getElementById("fetch-name-button").addEventListener("click", fetchParticipants);
-
     prizeInput.addEventListener("input", updatePrizeCount);
     nameList.addEventListener("input", updateNameCount);
 
 });
-
-
 
 
