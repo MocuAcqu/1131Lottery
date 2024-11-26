@@ -52,6 +52,15 @@
         <input type="file" id="name-file" accept=".csv, .txt" style="display:none">               
         <button class="start-lottery-button">開始抽獎</button>
     </div>
-    <script type="module" src="script3.js"></script>
+    <script src="script3.js"></script>
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+      
+        const SUPABASE_URL = "https://dqcwygutsfiepcbathqm.supabase.co"; // 替換為你的 Project URL
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxY3d5Z3V0c2ZpZXBjYmF0aHFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEwNzYxODksImV4cCI6MjA0NjY1MjE4OX0.EcmYcKIUZGXOc3PP0ViL58olwi_tCYmFRPlwVe58IAk"; // 替換為你的 anon public key
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+      
+        console.log(supabaseClient);
+      </script>
 </body>
 </html>
