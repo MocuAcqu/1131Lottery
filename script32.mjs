@@ -1,4 +1,4 @@
-import { supabase } from './supabaseClient';
+import { supabase } from './supabaseClient.js';
 
 
 const fetchNameButton = document.getElementById("fetch-name-button");
