@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 // 替換成你的 Supabase 資訊
 const SUPABASE_URL = "https://dqcwygutsfiepcbathqm.supabase.co"; // 替換為你的 Project URL
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxY3d5Z3V0c2ZpZXBjYmF0aHFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEwNzYxODksImV4cCI6MjA0NjY1MjE4OX0.EcmYcKIUZGXOc3PP0ViL58olwi_tCYmFRPlwVe58IAk"; // 替換為你的 anon public key
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabaseClient = supabaseClient.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 document.addEventListener("DOMContentLoaded", () => {    
     const prizeInput = document.getElementById("prize-input");
