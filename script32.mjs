@@ -11,7 +11,7 @@ function updateNameCount() {
     // 將人數顯示在 HTML 元素中（假設有一個元素用於顯示人數）
     const nameCountDisplay = document.getElementById("name-count");
     if (nameCountDisplay) {
-        nameCountDisplay.textContent = `目前人數:${nameCount}`;
+        nameCountDisplay.textContent = `目前人數: ${nameCount}`;
     }
 }
 
