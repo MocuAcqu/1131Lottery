@@ -26,7 +26,6 @@ async function fetchParticipants() {
         nameList.value = data.map(user => user.name).join("\n");
 
         // 更新名單人數
-        cosole("touch");
         updateNameCount();
     } catch (err) {
         console.error("Error fetching participants:", err.message);
