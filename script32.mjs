@@ -23,7 +23,7 @@ async function fetchParticipants() {
 
         // 將取得的名字匯入到名單輸入框
         const nameList = document.getElementById("name-list");
-        nameList.value = data.map(users => users.name).join("\n");
+        nameList.value = data.map(user => user.name).join("\n");
 
         // 更新名單人數
         updateNameCount();
