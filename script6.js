@@ -13,6 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentAngle = 0; // 旋轉角度
     const duration = 5000; // 旋轉動畫時長 (毫秒)
 
+    window.addEventListener('load', async () => {
+        nameList.value = "1\n"+"2\n"+"3\n"; // 加到輸入框
+        nameList.dispatchEvent(new Event("input"));
+      });
+
     // 更新人數並重新繪製轉盤
     nameList.addEventListener("input", () => {
         names = nameList.value.split("\n").filter(line => line.trim() !== "");
@@ -153,3 +158,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     drawWheel(); // 初始繪製
 });
+
