@@ -255,3 +255,58 @@ input[type="file"] {
 .hidden {
     display: none;
 }
+
+nloadCsv {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#downloadCsv:hover {
+    background-color: #45a049;
+}
+
+/* 獎項與中獎名單外框 */
+.winner-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fdfdfd;
+}
+
+/* 獎項名稱樣式 */
+.prize {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* 中獎者清單樣式 */
+.winner-names {
+    padding-left: 20px;
+    list-style: disc;
+}
+
+.winner-names li {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* 滾動樣式改進 */
+#winnerList {
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
