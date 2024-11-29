@@ -152,3 +152,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+const playButton = document.getElementById('playButton');
+const videoPopup = document.getElementById('videoPopup');
+const popupVideo = document.getElementById('popupVideo');
+
+playButton.addEventListener('click', () => {
+    // 顯示影片彈窗
+    videoPopup.style.display = 'flex';
+
+    // 重置影片到起始點
+    popupVideo.currentTime = 0;
+
+    // 保持靜音，避免自動播放限制
+    popupVideo.muted = true;
+    popupVideo.play();
+
+    // 等待影片開始播放後解除靜音
+    popupVideo.onplay = () => {
+        popupVideo.muted = false; // 解除靜音
+        popupVideo.volume = 1; // 設置音量為最大
+    };
+});
+
+// 影片播放完畢後隱藏彈窗
+popupVideo.addEventListener('ended', () => {
+    videoPopup.style.display = 'none'; // 影片播放完畢後隱藏彈窗
+    popupVideo.pause(); // 暫停影片（防止影片繼續播放）
+});
+
