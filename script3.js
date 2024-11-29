@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 抽獎功能
-    startLotteryButton.addEventListener("click", () => {
+    /*startLotteryButton.addEventListener("click", () => {
         const prizes = prizeInput.value.split("\n").filter(line => line.trim());
         const names = nameList.value.split("\n").filter(line => line.trim());
         if (prizes.length === 0 || names.length === 0) {
@@ -105,10 +105,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         let result = prizes.map(prize => `${prize} 的得主是：${names[Math.floor(Math.random() * names.length)]}`).join("\n");
         resultDisplay.textContent = result;
-    });
+    });*/
 
     
     prizeInput.addEventListener("input", updatePrizeCount);
     nameList.addEventListener("input", updateNameCount);
+
+    const playButton = document.getElementById("playButton");
+    const videoPopup = document.getElementById("videoPopup");
+    const popupVideo = document.getElementById("popupVideo");
+
+    playButton.addEventListener("click",() =>{
+        videoPopup.style.display = "flex";
+        popupVideo.currentTime =0;
+        popupVideo.muted = true;
+        popupVideo.play();
+
+        popupVideo.onplay = () => {
+            popupVideo.muted = false;
+            popupVideo.volume = 1;
+        }
+    })
+
+    popupVideo.addEventListener("ended",() => {
+        videoPopup.style.display = "none";
+        popupVideo.pause();
+    })
 
 });

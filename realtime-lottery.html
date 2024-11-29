@@ -52,7 +52,10 @@
         <!-- 在prize-import-button和name-import-button中加上 file input -->
         <input type="file" id="prize-file" accept=".csv, .txt" style="display:none">
         <input type="file" id="name-file" accept=".csv, .txt" style="display:none">               
-        <button class="start-lottery-button">開始抽獎</button>
+        <button id="playbutton" class="start-lottery-button">開始抽獎</button>
+        <div class="video-popup" id="videoPopup" style="display: none">
+            <video id="popupVideo" scr="抽獎調整3.mp4" autoplay muted></video>
+        </div>
     </div>
     
 </body>
