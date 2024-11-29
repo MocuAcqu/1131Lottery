@@ -251,6 +251,7 @@ main {
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
+    margin-top: 20px;
 }
 
 #closeModalBtn:hover {
@@ -276,6 +277,7 @@ main {
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
+    margin-top: 20px;
 }
 
 #downloadCsv:hover {
