@@ -37,21 +37,21 @@ function updateNameCount() {
 }
 
 // 清空 users 表
-async function clearUsersTable() {
+async function deleteAllUsers() {
     const { data, error } = await supabase
-      .from('users')  // 指定要操作的表格
-      .delete()       // 使用 delete 方法清空資料
-      .neq('id', ''); // 用一個條件來確保不會刪除表格結構，這裡保證不會誤刪掉任何資料（假設 'id' 不能為空）
+      .from('users')
+      .delete()
+      .neq('id', ''); // 這樣會確保只刪除 ID 不是空的資料
   
     if (error) {
-      console.error('清空 users 表錯誤:', error);
+      console.error("Error deleting users:", error)
     } else {
-      console.log('已成功清空 users 表');
+      console.log("All users deleted successfully:", data)
     }
   }
 
   // 在頁面加載時清空 users 表
 window.addEventListener('load', async () => {
-    await clearUsersTable();
+    await deleteAllUsers();
   });
   
