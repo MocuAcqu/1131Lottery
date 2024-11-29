@@ -118,10 +118,15 @@ const videoPopup = document.getElementById('videoPopup');
 const popupVideo = document.getElementById('popupVideo');
 
 playButton.addEventListener('click', () => {
-    videoPopup.style.display = 'flex'; // 顯示影片彈窗
-    popupVideo.currentTime = 0; // 重置影片到起始點
-    popupVideo.muted = true; // 保持靜音，避免自動播放限制
-    popupVideo.play(); // 播放影片
+    // 顯示影片彈窗
+    videoPopup.style.display = 'flex';
+
+    // 重置影片到起始點
+    popupVideo.currentTime = 0;
+
+    // 保持靜音，避免自動播放限制
+    popupVideo.muted = true;
+    popupVideo.play();
 
     // 等待影片開始播放後解除靜音
     popupVideo.onplay = () => {
