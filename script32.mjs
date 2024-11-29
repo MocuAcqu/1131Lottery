@@ -54,4 +54,4 @@ function updateNameCount() {
     }
 }*/
 
-fetchNameButton.addEventListener("click", fetchParticipants);
+fetchNameButton.addEventListener("click", fetchNameList);
