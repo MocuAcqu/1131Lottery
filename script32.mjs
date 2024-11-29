@@ -36,22 +36,22 @@ function updateNameCount() {
     }
 }
 
-/*async function fetchParticipants() {
-    try {
-        // 從 Supabase 資料庫中獲取抽獎者資料
-        const { data, error } = await supabase.from('users').select('name');
-        if (error) throw error;
-
-        // 將取得的名字匯入到名單輸入框
-        const nameList = document.getElementById("name-list");
-        nameList.value = data.map(user => user.name).join("\n");
-
-        // 更新名單人數
-        updateNameCount();
-    } catch (err) {
-        console.error("Error fetching participants:", err.message);
-        alert("無法載入抽獎名單，請稍後再試！");
+// 清空 users 表
+async function clearUsersTable() {
+    const { data, error } = await supabase
+      .from('users')  // 指定要操作的表格
+      .delete()       // 使用 delete 方法清空資料
+      .neq('id', ''); // 用一個條件來確保不會刪除表格結構，這裡保證不會誤刪掉任何資料（假設 'id' 不能為空）
+  
+    if (error) {
+      console.error('清空 users 表錯誤:', error);
+    } else {
+      console.log('已成功清空 users 表');
     }
-}*/
+  }
 
-
+  // 在頁面加載時清空 users 表
+window.addEventListener('load', async () => {
+    await clearUsersTable();
+  });
+  
