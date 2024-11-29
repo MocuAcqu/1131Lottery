@@ -114,23 +114,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-const playButton = document.getElementById("playButton");
-    const videoPopup = document.getElementById("videoPopup");
-    const popupVideo = document.getElementById("popupVideo");
+    const playButton = document.getElementById('playButton');
+    const videoPopup = document.getElementById('videoPopup');
+    const popupVideo = document.getElementById('popupVideo');
 
-    playButton.addEventListener("click",() => {
-        videoPopup.style.display = "flex";
-        popupVideo.currentTime =0;
-        popupVideo.muted = true;
-        popupVideo.play();
+    playButton.addEventListener('click', () => {
+        videoPopup.style.display = 'flex'; // 顯示影片彈窗
+        popupVideo.currentTime = 0; // 重置影片到起始點
+        popupVideo.muted = true; // 保持靜音，避免自動播放限制
+        popupVideo.play(); // 播放影片
 
+        // 等待影片開始播放後解除靜音
         popupVideo.onplay = () => {
-            popupVideo.muted = false;
-            popupVideo.volume = 1;
-        }
-    })
+            popupVideo.muted = false; // 解除靜音
+            popupVideo.volume = 1; // 設置音量為最大
+        };
+    });
 
-    popupVideo.addEventListener("ended",() => {
-        videoPopup.style.display = "none";
-        popupVideo.pause();
-    })
+    // 影片播放完畢後隱藏彈窗
+    popupVideo.addEventListener('ended', () => {
+        videoPopup.style.display = 'none'; // 影片播放完畢後隱藏彈窗
+        popupVideo.pause(); // 暫停影片（防止影片繼續播放）
+    });

@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    background-image: url('背景.jpg');
+    background-image: url('_d90697b9-8fdf-4a3e-b32d-454a99d5edd2.jpg');
     background-size: cover;
     background-position: center;
     padding: 60px 0;
@@ -215,4 +215,25 @@ input[type="file"] {
 
 .name-section h3{
     font-size: 24px;
+}
+
+.video-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* 半透明背景 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.video-popup video {
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
