@@ -119,7 +119,7 @@ const popupVideo = document.getElementById('popupVideo');
 
 playButton.addEventListener('click', () => {
     // 顯示影片彈窗
-    videoPopup.classList.remove("hidden"); // 顯示影片彈窗
+    videoPopup.style.display = 'flex';
 
     // 重置影片到起始點
     popupVideo.currentTime = 0;
@@ -137,6 +137,6 @@ playButton.addEventListener('click', () => {
 
 // 影片播放完畢後隱藏彈窗
 popupVideo.addEventListener('ended', () => {
-    videoPopup.classList.add("hidden"); // 隱藏影片彈窗
+    videoPopup.style.display = 'none'; // 影片播放完畢後隱藏彈窗
     popupVideo.pause(); // 暫停影片（防止影片繼續播放）
 });
