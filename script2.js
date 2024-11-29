@@ -162,6 +162,14 @@ const modalContent = document.querySelector(".modal-content");
 let winners = []; // 儲存中獎名單
 
 playButton.addEventListener('click', () => {
+
+    const prizes = prizeInput.value.split("\n").filter(line => line.trim());
+    const names = nameList.value.split("\n").filter(line => line.trim());
+    if (prizes.length === 0 || names.length === 0) {
+        alert("請確保有獎項和名單！");
+        return;
+    }
+
     // 顯示影片彈窗
     videoPopup.style.display = 'flex';
 
