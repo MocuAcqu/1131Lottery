@@ -109,6 +109,7 @@ textarea {
     font-weight: bold;
     cursor: pointer;
     background-color: #8bc34a;
+    color: white;
 }
 
 .name-import-button{
@@ -120,6 +121,7 @@ textarea {
     font-weight: bold;
     cursor: pointer;
     background-color: #8bc34a;
+    color: white;
 }
 
 #fetch-name-button{
@@ -131,6 +133,7 @@ textarea {
     font-weight: bold;
     cursor: pointer;
     background-color: #8bc34a;
+    color: white;
 }
 
 #fetch-name-button:hover {

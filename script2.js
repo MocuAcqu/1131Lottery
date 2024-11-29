@@ -234,20 +234,23 @@ function generateWinners() {
 // 顯示中獎名單
 function displayWinners() {
     const listHtml = winners.map(winner =>
-        `<p>${winner.prize}: ${winner.winners.join(", ")}</p>`
+        `
+        <div class="winner-item">
+            <h3 class="prize">${winner.prize}</h3>
+            <ul class="winner-names">
+                ${winner.winners.map(name => `<li>${name}</li>`).join("")}
+            </ul>
+        </div>
+        `
     ).join("");
 
-    modalContent.innerHTML = `
-        <h2>中獎名單</h2>
-        ${listHtml}
-        <button id="downloadCsv">下載 CSV</button>
-        <button id="closeModalBtn">確認</button>
-    `;
+    const modalContent = document.querySelector("#winnerList");
+    modalContent.innerHTML = listHtml;
 
-    // 綁定下載 CSV 功能
+    // 綁定下載 CSV 和關閉按鈕
     document.getElementById("downloadCsv").addEventListener("click", downloadCsv);
     document.getElementById("closeModalBtn").addEventListener("click", () => {
-        rulesModal.style.display = "none";
+        document.getElementById("rulesModal").style.display = "none";
     });
 }
 
