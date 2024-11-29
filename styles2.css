@@ -228,10 +228,11 @@ main {
     max-width: 500px;
     width: 90%;
     text-align: center;
+    font-size: 22px;
 }
 
 .modal h2 {
-    font-size: 24px;
+    font-size: 28px;
     color: #333;
 }
 
@@ -252,7 +253,6 @@ main {
 
 #closeModalBtn:hover {
     background-color: #45a049;
-    margin-top: 10px;
 }
 
 #winnerList {
@@ -267,15 +267,15 @@ main {
 }
 
 #downloadCsv {
-    background-color: #007BFF;
+    background-color: #4CAF50;
     color: white;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
     cursor: pointer;
-    margin-top: 10px;
+    font-size: 18px;
 }
 
 #downloadCsv:hover {
-    background-color: #0056b3;
+    background-color: #45a049;
 }
