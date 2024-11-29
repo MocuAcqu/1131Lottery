@@ -253,16 +253,36 @@ function displayWinners() {
 
 // 下載 CSV 檔案
 function downloadCsv() {
-    let csvContent = "data:text/csv;charset=utf-8,獎項,中獎者\n";
-    winners.forEach(winner => {
-        csvContent += `${winner.prize},${winner.winners.join("; ")}\n`;
-    });
+    // 定義標題欄
+    const prizes = [...new Set(winners.map(winner => winner.prize))]; // 獲取所有獎項
+    const header = ["中獎者", ...prizes];
+    
+    // 建立 CSV 資料
+    const rows = [];
+    const maxWinners = Math.max(...winners.map(winner => winner.winners.length)); // 找到中獎人數最多的獎項
+    
+    for (let i = 0; i < maxWinners; i++) {
+        const row = prizes.map(prize => {
+            const prizeData = winners.find(w => w.prize === prize);
+            return prizeData && prizeData.winners[i] ? prizeData.winners[i] : ""; // 填入中獎者或空字串
+        });
+        rows.push(["", ...row]); // 第一欄保留中獎者的名字
+    }
+    
+    // 合併標題與資料
+    const csvData = [header, ...rows];
+    
+    // 轉換成 CSV 格式字串並添加 UTF-8 BOM
+    const BOM = '\uFEFF';
+    const csvContent = BOM + csvData.map(row => row.join(",")).join("\n");
 
-    const encodedUri = encodeURI(csvContent);
+    // 建立 Blob 並下載
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
     link.setAttribute("download", "中獎名單.csv");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-};
+}
