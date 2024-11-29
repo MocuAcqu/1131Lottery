@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         nameCount.textContent = `目前人數: ${names.length}`;
     }
 
+    fetchNameButton.addEventListener("click", fetchNameList);
     // 匯入資料庫名單
     fetchNameButton.addEventListener("click", async () => {
         const names = await fetchNameList(); // 從資料庫獲取名單
