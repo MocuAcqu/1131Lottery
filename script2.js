@@ -155,6 +155,11 @@ document.addEventListener("DOMContentLoaded", () => {
 const playButton = document.getElementById('playButton');
 const videoPopup = document.getElementById('videoPopup');
 const popupVideo = document.getElementById('popupVideo');
+const modal = document.getElementById('rulesModal');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const modalContent = document.querySelector(".modal-content");
+
+let winners = []; // 儲存中獎名單
 
 playButton.addEventListener('click', () => {
     // 顯示影片彈窗
@@ -178,5 +183,77 @@ playButton.addEventListener('click', () => {
 popupVideo.addEventListener('ended', () => {
     videoPopup.style.display = 'none'; // 影片播放完畢後隱藏彈窗
     popupVideo.pause(); // 暫停影片（防止影片繼續播放）
+
+    generateWinners();
+    displayWinners();
+    rulesModal.style.display = "flex"; // 顯示視窗
 });
 
+// 關閉視窗按鈕
+closeModalBtn.addEventListener("click", () => {
+    rulesModal.style.display = "none";
+});
+
+// 抽獎邏輯：隨機分配中獎者
+function generateWinners() {
+    winners = [];
+    const prizes = prizeInput.value.trim().split("\n").filter(line => line);
+    const names = nameList.value.trim().split("\n").filter(line => line);
+
+    if (names.length === 0 || prizes.length === 0) {
+        alert("請確認已輸入獎項及名單！");
+        return;
+    }
+
+    prizes.forEach(prizeLine => {
+        const [prizeName, prizeCount] = prizeLine.split(",");
+        const count = parseInt(prizeCount.trim(), 10);
+
+        if (!prizeName || isNaN(count)) return;
+
+        const shuffled = [...names].sort(() => 0.5 - Math.random());
+        const selected = shuffled.splice(0, count);
+
+        winners.push({ prize: prizeName.trim(), winners: selected });
+
+        // 移除中獎者，避免重複抽中
+        names.splice(0, count);
+    });
+}
+
+// 顯示中獎名單
+function displayWinners() {
+    const listHtml = winners.map(winner =>
+        `<p>${winner.prize}: ${winner.winners.join(", ")}</p>`
+    ).join("");
+
+    modalContent.innerHTML = `
+        <h2>中獎名單</h2>
+        ${listHtml}
+        <button id="downloadCsv">下載 CSV</button>
+        <button id="closeModalBtn">確認</button>
+    `;
+
+    // 綁定下載 CSV 功能
+    document.getElementById("downloadCsv").addEventListener("click", downloadCsv);
+    document.getElementById("closeModalBtn").addEventListener("click", () => {
+        rulesModal.style.display = "none";
+    });
+}
+
+// 下載 CSV 檔案
+function downloadCsv() {
+    let csvContent = "data:text/csv;charset=utf-8,獎項,中獎者\n";
+    winners.forEach(winner => {
+        csvContent += `${winner.prize},${winner.winners.join("; ")}\n`;
+    });
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "中獎名單.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+});
