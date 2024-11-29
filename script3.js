@@ -1,4 +1,27 @@
+import { fetchNameList } from './script32.mjs';
 
+document.addEventListener("DOMContentLoaded", () => {
+    const fetchNameButton = document.getElementById("fetch-name-button");
+    const nameList = document.getElementById("name-list");
+    const nameCount = document.getElementById("name-count");
+
+    // 更新名單人數
+    function updateNameCount() {
+        const names = nameList.value.split("\n").filter(line => line.trim());
+        nameCount.textContent = `目前人數: ${names.length}`;
+    }
+
+    // 匯入資料庫名單
+    fetchNameButton.addEventListener("click", async () => {
+        const names = await fetchNameList(); // 從資料庫獲取名單
+        if (names.length > 0) {
+            nameList.value = names.join("\n"); // 顯示到輸入框
+            updateNameCount();
+        } else {
+            alert('未從資料庫獲取到任何名單！');
+        }
+    });
+});
 
 document.addEventListener("DOMContentLoaded", () => {    
         
@@ -88,5 +111,3 @@ document.addEventListener("DOMContentLoaded", () => {
     nameList.addEventListener("input", updateNameCount);
 
 });
-
-
