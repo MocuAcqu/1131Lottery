@@ -1,4 +1,4 @@
-import { supabase } from './supabaseClient.js';
+//import { supabase } from './supabaseClient.js';
 import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 
 const supabaseUrl = 'https://dqcwygutsfiepcbathqm.supabase.co'; // 從 Supabase 設定檔取得
