@@ -225,7 +225,6 @@ input[type="file"] {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8); /* 半透明背景 */
-    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
@@ -236,6 +235,12 @@ input[type="file"] {
     max-width: 800px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#popupVideo {
+    width: 80%; /* 設定影片大小 */
+    max-width: 800px;
+    height: auto;
 }
 
 .hidden {
