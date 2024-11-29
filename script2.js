@@ -253,7 +253,7 @@ function displayWinners() {
 
 // 下載 CSV 檔案
 function downloadCsv() {
-    let csvContent = "獎項,中獎者\n";
+    let csvContent = "data:text/csv;charset=utf-8,獎項,中獎者\n";
     winners.forEach(winner => {
         csvContent += `${winner.prize},${winner.winners.join("; ")}\n`;
     });

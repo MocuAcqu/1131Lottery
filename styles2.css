@@ -229,10 +229,12 @@ main {
     width: 90%;
     text-align: center;
     font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .modal h2 {
-    font-size: 28px;
+    font-size: 30px;
     color: #333;
 }
 
