@@ -39,9 +39,9 @@ function updateNameCount() {
 // 清空 users 表
 async function deleteAllUsers() {
     const { data, error } = await supabase
-      .from('users')
-      .delete()
-      .neq('id', ''); // 這樣會確保只刪除 ID 不是空的資料
+    .from('users')
+    .delete() // 這將刪除所有資料
+  
   
     if (error) {
       console.error("Error deleting users:", error)
