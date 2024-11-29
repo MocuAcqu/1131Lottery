@@ -245,7 +245,7 @@ input[type="file"] {
 
 #popupVideo {
     width: 80%; /* 設定影片大小 */
-    max-width: 800px;
+    max-width: 1000px;
     height: auto;
 }
 
