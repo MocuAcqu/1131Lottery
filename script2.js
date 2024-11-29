@@ -159,6 +159,7 @@ const modal = document.getElementById('rulesModal');
 const closeModalBtn = document.getElementById('closeModalBtn');
 const modalContent = document.querySelector(".modal-content");
 const prizeInput = document.getElementById("prize-input");
+const nameList = document.getElementById("name-list");
 
 let winners = []; // 儲存中獎名單
 
