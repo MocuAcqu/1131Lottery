@@ -36,7 +36,7 @@ function updateNameCount() {
     }
 }
 
-async function fetchParticipants() {
+/*async function fetchParticipants() {
     try {
         // 從 Supabase 資料庫中獲取抽獎者資料
         const { data, error } = await supabase.from('users').select('name');
@@ -52,6 +52,6 @@ async function fetchParticipants() {
         console.error("Error fetching participants:", err.message);
         alert("無法載入抽獎名單，請稍後再試！");
     }
-}
+}*/
 
 fetchNameButton.addEventListener("click", fetchParticipants);
