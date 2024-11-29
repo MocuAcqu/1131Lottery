@@ -41,6 +41,7 @@ async function deleteAllUsers() {
     const { data, error } = await supabase
     .from('users')
     .delete() // 這將刪除所有資料
+    .neq('id', null); 
   
   
     if (error) {
