@@ -111,11 +111,14 @@ document.addEventListener("DOMContentLoaded", () => {
     prizeInput.addEventListener("input", updatePrizeCount);
     nameList.addEventListener("input", updateNameCount);
 
-    const playButton = document.getElementById("playButton");
+
+});
+
+const playButton = document.getElementById("playButton");
     const videoPopup = document.getElementById("videoPopup");
     const popupVideo = document.getElementById("popupVideo");
 
-    playButton.addEventListener("click",() =>{
+    playButton.addEventListener("click",() => {
         videoPopup.style.display = "flex";
         popupVideo.currentTime =0;
         popupVideo.muted = true;
@@ -131,5 +134,3 @@ document.addEventListener("DOMContentLoaded", () => {
         videoPopup.style.display = "none";
         popupVideo.pause();
     })
-
-});
