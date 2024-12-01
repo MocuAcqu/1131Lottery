@@ -1,3 +1,7 @@
+const playButton = document.getElementById('playButton');
+const videoPopup = document.getElementById('videoPopup');
+const popupVideo = document.getElementById('popupVideo');
+
 const dotPositions = {
     1: [[50, 50]],
     2: [[30, 30], [70, 70]],
@@ -65,6 +69,33 @@ function rollDice() {
     if (totalScore === luckyNumber) {
         resultMessageElement.className = 'win-message';
         resultMessageElement.textContent = '恭喜你中獎了！';
+
+        // 顯示影片彈窗
+        videoPopup.style.display = 'flex';
+
+        // 重置影片到起始點
+        popupVideo.currentTime = 0;
+
+        // 保持靜音，避免自動播放限制
+        popupVideo.muted = true;
+        popupVideo.play();
+
+        // 等待影片開始播放後解除靜音
+        popupVideo.onplay = () => {
+            popupVideo.muted = false; // 解除靜音
+            popupVideo.volume = 1; // 設置音量為最大
+        };
+
+        // 影片播放完畢後隱藏彈窗
+        popupVideo.addEventListener('ended', () => {
+        videoPopup.style.display = 'none'; // 影片播放完畢後隱藏彈窗
+        popupVideo.pause(); // 暫停影片（防止影片繼續播放）
+
+        generateWinners();
+        displayWinners();
+        rulesModal.style.display = "flex"; // 顯示視窗
+        });
+
     } else {
         resultMessageElement.className = 'lose-message';
         resultMessageElement.textContent = '銘謝惠顧';
@@ -86,3 +117,5 @@ window.onload = function() {
         modal.style.display = 'none'; // 隱藏視窗
     }
 }
+
+
