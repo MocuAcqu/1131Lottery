@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* CSS */
+
+header {
+    background-image: url('背景.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 60px 0;
+    color: #333;
+    height: 150px;
+    width: 100%;
+    position: fixed; /* 固定在視窗頂部 */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* 確保置於其他元素之上 */
+}
+
+nav {
+    background-color: #4b6769;
+    padding: 10px;
+    width: 100%;
+    position: fixed; /* 固定在視窗頂部 */
+    top: 150px; /* 確保 nav 在 header 之下 */
+    z-index: 999; /* 保持在 header 下層，但仍高於其他內容 */
+}
+
+main {
+    margin-top: 10%; /* 預留空間，避免內容被 header 和 nav 覆蓋 */
+    background-color: #d1d1d1;
+    padding: 25px;
+    border-radius: 10%;
+    width: 30%;
+}
+
+
+header h1 {
+    font-size: 50px;
+    color: #1a0a40;
+    font-weight: 800;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a.active {
+    color: rgb(255, 237, 147);
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+main form label {
+    margin: 10px 0 5px;
+}
+
+main form input {
+    width: 250px;
+    padding: 8px;
+    margin-bottom: 5px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+main form button {
+    padding: 10px 20px;
+    background-color: #4b6769;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+}
+
+main form button:hover {
+    background-color: #365152;
+}
+
+#random-number-display {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#random-number {
+    font-size: 80px;
+    font-weight: bold;
+    color: #1a0a40;
+    transition: transform 0.3s ease, color 0.3s ease;
+    animation: number-bounce 1s infinite;
+}
+
+#random-number.roll {
+    animation: number-roll 0.5s ease-in-out;
+    color: #ff5722;
+}
+
+@keyframes number-roll {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes number-bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
