@@ -11,7 +11,7 @@ const dotPositions = {
     6: [[20, 20], [20, 50], [20, 80], [80, 20], [80, 50], [80, 80]]
 };
 
-let luckyNumber = 1;
+let luckyNumber = 3;
 
 
 
