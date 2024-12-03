@@ -36,9 +36,12 @@ function updateNameCount() {
     }
 }
 
+const serviceRoleKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxY3d5Z3V0c2ZpZXBjYmF0aHFtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMTA3NjE4OSwiZXhwIjoyMDQ2NjUyMTg5fQ.0pTRJQYmSMMbG-oQhXw_27uNkTi3KxtIBhUJCZJuul0"
+const supabase2 = createClient(supabaseUrl, serviceRoleKey); // 使用服務金鑰
+
 // 清空 users 表
-/*async function deleteAllUsers() {
-    const { data, error } = await supabase
+async function deleteAllUsers() {
+    const { data, error } = await supabase2
     .from('users')
     .delete() // 這將刪除所有資料
     .neq('id', null); 
@@ -50,15 +53,17 @@ function updateNameCount() {
     }
   }
 
+
+
+
   // 在頁面加載時清空 users 表
 window.addEventListener('load', async () => {
     await deleteAllUsers();
-  });*/
+  });
   
-  const serviceRoleKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxY3d5Z3V0c2ZpZXBjYmF0aHFtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMTA3NjE4OSwiZXhwIjoyMDQ2NjUyMTg5fQ.0pTRJQYmSMMbG-oQhXw_27uNkTi3KxtIBhUJCZJuul0"
-  const supabase2 = createClient(supabaseUrl, serviceRoleKey); // 使用服務金鑰
+
   
-  import express from 'express';
+  /*import express from 'express';
   const app = express();
 
 
@@ -69,12 +74,12 @@ window.addEventListener('load', async () => {
       } else {
           res.status(200).json({ message: 'All users cleared', data });
       }
-  });
+  });*/
 
-  window.addEventListener('load', async () => {
+  /*window.addEventListener('load', async () => {
     fetch('/clear-users', { method: 'POST' })
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
-  });
+  });*/
 
