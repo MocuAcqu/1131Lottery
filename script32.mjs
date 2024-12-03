@@ -62,24 +62,7 @@ window.addEventListener('load', async () => {
   });
   
 
-  
-  /*import express from 'express';
-  const app = express();
 
 
-  app.post('/clear-users', async (req, res) => {
-      const { data, error } = await supabase2.from('users').delete().neq('id', null);
-      if (error) {
-          res.status(500).json({ message: 'Error clearing users', error });
-      } else {
-          res.status(200).json({ message: 'All users cleared', data });
-      }
-  });*/
 
-  /*window.addEventListener('load', async () => {
-    fetch('/clear-users', { method: 'POST' })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-  });*/
 

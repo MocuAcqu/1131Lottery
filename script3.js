@@ -213,13 +213,15 @@ function displayWinners() {
     document.getElementById("closeModalBtn").addEventListener("click", () => {
         document.getElementById("rulesModal").style.display = "none";
     });
+    document.getElementById("emailBtn").addEventListener("click", downloadCsv2);
+    getAllWinners()
 }
 
 // 下載 CSV 檔案
 function downloadCsv() {
     // 定義標題欄
     const prizes = [...new Set(winners.map(winner => winner.prize))]; // 獲取所有獎項
-    const header = ["中獎者", ...prizes];
+    const header = ["中獎獎項", ...prizes];
     
     // 建立 CSV 資料
     const rows = [];
@@ -249,4 +251,70 @@ function downloadCsv() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+}
+
+function getAllWinners() {
+    // 使用 map 取得每個獎項的得獎者，並使用 concat 合併成一個新的陣列
+    const allWinners = winners.map(winner => winner.winners).flat();
+
+    return allWinners;
+}
+
+// 這個函數會從 Supabase 獲取中獎者的 email 並下載 CSV 檔案
+async function fetchWinnerEmails() {
+    try {
+        // 查詢中獎者的 email
+        const { data, error } = await supabase
+            .from('users') // 假設表格名為 'users'
+            .select('email, name') // 假設表格包含 'email' 和 'name' 欄位
+            .in("name", allWinners); // allWinners 是包含獲獎者名字的陣列
+
+        if (error) {
+            console.error("查詢中獎者失敗:", error);
+            return;
+        }
+
+        // 檢查是否有資料
+        if (data && data.length > 0) {
+            // 將資料轉換為 CSV 格式
+            const csvData = convertToCSV(data);
+
+            // 下載 CSV 檔案
+            downloadCSV(csvData);
+        } else {
+            console.log("沒有找到中獎者的資料");
+        }
+
+    } catch (error) {
+        console.error("發生錯誤:", error);
+    }
+}
+
+// 將資料轉換成 CSV 格式
+function convertToCSV(data) {
+    // 先建立 CSV 表頭
+    const header = ['Name', 'Email'];
+    const rows = data.map(item => [item.name, item.email]);
+
+    // 將表頭和資料行合併成一個二維陣列
+    const csvContent = [header, ...rows].map(e => e.join(",")).join("\n");
+
+    return csvContent;
+}
+
+// 下載 CSV 檔案
+function downloadCSV2(csvContent) {
+    // 創建一個 Blob 物件來保存 CSV 資料
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+
+    // 創建一個連結並觸發下載
+    const link = document.createElement('a');
+    if (link.download !== undefined) {  // 確保支持下載屬性
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'winners_emails.csv');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 }
