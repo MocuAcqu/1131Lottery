@@ -37,12 +37,12 @@ function updateNameCount() {
 }
 
 //const supabaseUrl = 'https://dqcwygutsfiepcbathqm.supabase.co';
-//const serviceRoleKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxY3d5Z3V0c2ZpZXBjYmF0aHFtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMTA3NjE4OSwiZXhwIjoyMDQ2NjUyMTg5fQ.0pTRJQYmSMMbG-oQhXw_27uNkTi3KxtIBhUJCZJuul0"
-//supabase = createClient(supabaseUrl, serviceRoleKey); // 使用服務金鑰
+const serviceRoleKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxY3d5Z3V0c2ZpZXBjYmF0aHFtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczMTA3NjE4OSwiZXhwIjoyMDQ2NjUyMTg5fQ.0pTRJQYmSMMbG-oQhXw_27uNkTi3KxtIBhUJCZJuul0"
+const supabase2 = createClient(supabaseUrl, serviceRoleKey); // 使用服務金鑰
 
 // 清空 users 表
 async function deleteAllUsers() {
-    const { error } = await supabase.from('users').delete();
+    const { error } = await supabase2.from('users').delete();
   
     if (error) {
       console.error("Error deleting users:", error)
