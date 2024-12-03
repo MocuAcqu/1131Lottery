@@ -42,14 +42,18 @@ const supabase2 = createClient(supabaseUrl, serviceRoleKey); // 使用服務金�
 
 // 清空 users 表
 async function deleteAllUsers() {
-    const { error } = await supabase2.from('users').delete().in('number', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
+    const { error } = await supabase2
+        .from('users')
+        .delete()
+        .gt('number', 0); // 使用 .gt() 指定條件 number > 0
   
     if (error) {
-      console.error("Error deleting users:", error)
+        console.error("Error deleting users:", error);
     } else {
-      console.log("All users deleted successfully:", data)
+        console.log("All users with number > 0 deleted successfully");
     }
-  }
+}
+
 
 
   // 在頁面加載時清空 users 表
