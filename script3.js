@@ -260,10 +260,11 @@ function getAllWinners() {
     return allWinners;
 }
 
-// 這個函數會從 Supabase 獲取中獎者的 email 並下載 CSV 檔案
+
+// 這個函數會從 Supabase 獲取中獎者的 email 和 name，並下載 CSV 檔案
 async function fetchWinnerEmails() {
     try {
-        // 查詢中獎者的 email
+        // 查詢中獎者的 email 和 name
         const { data, error } = await supabase
             .from('users') // 假設表格名為 'users'
             .select('email, name') // 假設表格包含 'email' 和 'name' 欄位
@@ -284,7 +285,6 @@ async function fetchWinnerEmails() {
         } else {
             console.log("沒有找到中獎者的資料");
         }
-
     } catch (error) {
         console.error("發生錯誤:", error);
     }
@@ -303,7 +303,7 @@ function convertToCSV(data) {
 }
 
 // 下載 CSV 檔案
-function downloadCSV2(csvContent) {
+function downloadCSV(csvContent) {
     // 創建一個 Blob 物件來保存 CSV 資料
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
 
@@ -319,4 +319,5 @@ function downloadCSV2(csvContent) {
     }
 }
 
-document.getElementById("emailBtn").addEventListener("click", downloadCSV2);
+// 綁定按鈕事件，觸發 fetchWinnerEmails
+document.getElementById("emailBtn").addEventListener("click", fetchWinnerEmails);
