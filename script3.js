@@ -213,7 +213,7 @@ function displayWinners() {
     document.getElementById("closeModalBtn").addEventListener("click", () => {
         document.getElementById("rulesModal").style.display = "none";
     });
-    document.getElementById("emailBtn").addEventListener("click", downloadCsv2);
+    
     getAllWinners()
 }
 
@@ -318,3 +318,5 @@ function downloadCSV2(csvContent) {
         document.body.removeChild(link);
     }
 }
+
+document.getElementById("emailBtn").addEventListener("click", downloadCsv2);
