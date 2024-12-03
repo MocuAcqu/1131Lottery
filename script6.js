@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 初始化時預設名單
     window.addEventListener('load', async () => {
-        nameList.value = "1\n" + "2\n" + "3\n"; // 預設資料
+        nameList.value = "1\n" + "2\n" + "3"; // 預設資料
         nameList.dispatchEvent(new Event("input"));
     });
 
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const segmentAngle = 360 / names.length;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height); // 清除畫布
-
+        
         // 繪製每個扇形
         names.forEach((name, index) => {
             const startAngle = (segmentAngle * index + currentAngle) * (Math.PI / 180);
@@ -109,7 +109,11 @@ document.addEventListener("DOMContentLoaded", () => {
     nameList.addEventListener("input", () => {
         names = nameList.value.split("\n").filter(line => line.trim() !== "");
         nameCount.textContent = `目前人數: ${names.length}`;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        currentAngle = 0;
         drawWheel();
+        getWinnerIndex(rotation);
+        
     });
 
     // 匯入資料按鈕功能
