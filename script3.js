@@ -319,4 +319,4 @@ function downloadCSV2(csvContent) {
     }
 }
 
-document.getElementById("emailBtn").addEventListener("click", downloadCsv2);
+document.getElementById("emailBtn").addEventListener("click", downloadCSV2);
