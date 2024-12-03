@@ -17,7 +17,7 @@ let luckyNumber = 1;
 
 // 設定幸運數字
 function generateLuckyNumber() {
-    luckyNumber = Math.floor(Math.random() * 18) + 1; // 1-18的範圍
+    luckyNumber = Math.floor(Math.random() * 16) + 3; // 1-18的範圍
     document.getElementById("luckyNumber").textContent = luckyNumber;
 }
 
@@ -53,9 +53,7 @@ function rollDice() {
     resultMessageElement.className = ''; // 清除之前的樣式
 
     // 根據幸運數字決定骰子數量
-    let diceCount;
-
-    diceCount = Math.floor(Math.random() * 3) + 1; // 1、2 或 3 顆
+    const diceCount = 3; // 3 顆
 
     let totalScore = 0;
     for (let i = 0; i < diceCount; i++) {
