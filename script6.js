@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let names = [];
     let currentAngle = 0; // 初始旋轉角度
-    const duration = 5000; // 旋轉動畫時長 (毫秒)
+    const duration = 4000; // 旋轉動畫時長 (毫秒)
 
     // 初始化時預設名單
     window.addEventListener('load', async () => {
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         canvas.style.transform = `rotate(${totalRotation}deg)`; // 只旋轉轉盤，不旋轉指針
 
         setTimeout(() => {
-            resultText.textContent = `恭喜 ${winnerName} 中獎！`;
+            //resultText.textContent = `恭喜 ${winnerName} 中獎！`;
             alert(`恭喜 ${winnerName} 中獎！`);
             currentAngle = totalRotation % 360;
             canvas.style.transition = "none";
