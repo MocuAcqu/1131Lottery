@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>轉輪盤</title>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轉輪盤</title>
     <link rel="stylesheet" href="styles6.css">
 </head>
 <body>
@@ -24,13 +30,14 @@
     <main>
         <div class="lottery-container">
             <div class="wheel-section">
-
-                <div  class="pointer"></div> 
-                <canvas id="wheelCanvas" width="400" height="400"></canvas>
+                <!-- 父容器，將指針和轉盤放入同一個容器 -->
+                <div class="wheel-container">
+                    <div class="pointer"></div> <!-- 指針 -->
+                    <canvas id="wheelCanvas" width="400" height="400"></canvas> <!-- 轉盤 -->
+                </div>
                 <button id="spinButton" class="spin-button">旋轉</button>
             </div>
-            
-
+    
             <div class="input-section">
                 <h3>輸入抽獎名單:</h3>
                 <textarea id="name-list" placeholder="每行一筆，輸入名稱或資料"></textarea>
@@ -44,6 +51,7 @@
             </div>
         </div>
     </main>
+    
     <script src="script6.js"></script>
 </body>
 </html>

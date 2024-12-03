@@ -45,7 +45,6 @@ nav ul li a.active {
     color: rgb(255, 237, 147);
 }
 
-
 body {
     background-color: #f7f7f7;
     text-align: center;
@@ -64,13 +63,35 @@ main {
     gap: 20px;
 }
 
-.wheel-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* 轉盤和指針的容器 */
+.wheel-container {
+    position: relative; /* 讓指針和轉盤的父容器能控制其位置 */
+    width: 400px;
+    height: 400px;
+    margin: 0 auto; /* 居中顯示 */
 }
 
+/* 指針樣式 */
+.pointer {
+    position: absolute;
+    top: -15px; /* 讓指針一部分在轉盤外面 */
+    left: 50%; /* 水平居中 */
+    transform: translateX(-50%); /* 確保指針在轉盤的正上方 */
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid #008cba; /* 藍色倒三角指針 */
+    z-index: 10; /* 確保指針在轉盤的上方 */
+}
 
+/* 轉盤樣式 */
+#wheelCanvas {
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    z-index: 1; /* 讓轉盤在指針下方 */
+}
 .input-section {
     text-align: left;
     max-width: 400px;
@@ -118,33 +139,7 @@ main {
     font-size: 14px;
     color: #555;
 }
-/* 指針樣式 */
-/* 設置指針的樣式 */
-.pointer {
-    position: absolute;
-    top: 200px;  /* 保持指針的位置不變 */
-    left: 40.5%;   /* 保持指針的水平位置設置為畫布中心 */
-    transform: translateX(-50%);  /* 使指針居中對齊 */
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;   /* 左邊透明，稍微增大底邊 */
-    border-right: 15px solid transparent;  /* 右邊透明，稍微增大底邊 */
-    border-top: 30px solid #008cba;        /* 藍色倒三角形指針，稍微增大高度 */
-    z-index: 10;  /* 確保指針位於轉盤的上方 */
-}
 
-
-
-/* 轉盤樣式 */
-#wheelCanvas {
-    position: relative;
-    background-color: #fff;
-    border-radius: 50%;
-    border: 2px solid #ddd;
-    z-index: 1;  /* 確保轉盤在指針下方 */
-}
-
-/* 旋轉按鈕樣式 */
 .spin-button {
     margin-top: 20px;
     padding: 10px 20px;
@@ -159,4 +154,3 @@ main {
 .spin-button:hover {
     background-color: #45a049;
 }
-
