@@ -41,10 +41,7 @@ const supabase2 = createClient(supabaseUrl, serviceRoleKey); // 使用服務金�
 
 // 清空 users 表
 async function deleteAllUsers() {
-    const { data, error } = await supabase2
-    .from('users')
-    .delete() // 這將刪除所有資料
-    .neq('id', null); 
+    const { data, error } = await supabase2.from('users').delete().neq('id', null);
   
     if (error) {
       console.error("Error deleting users:", error)
@@ -52,8 +49,6 @@ async function deleteAllUsers() {
       console.log("All users deleted successfully:", data)
     }
   }
-
-
 
 
   // 在頁面加載時清空 users 表
