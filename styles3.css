@@ -334,6 +334,21 @@ input[type="file"] {
     background-color: #45a049;
 }
 
+#emailBtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#emailBtn:hover {
+    background-color: #45a049;
+}
+
 /* 獎項與中獎名單外框 */
 .winner-item {
     margin-bottom: 20px;
@@ -373,3 +388,4 @@ input[type="file"] {
     border-radius: 5px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
 }
+
