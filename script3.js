@@ -274,7 +274,7 @@ async function fetchWinnerEmails(allWinners) {
         // 查詢中獎者的 email 和 name
         const { data, error } = await supabase
             .from('users') // 假設表格名為 'users'
-            .select('email, name') // 假設表格包含 'email' 和 'name' 欄位
+            .select('email') // 假設表格包含 'email' 和 'name' 欄位
             .in('name', allWinners); // 使用傳入的 allWinners 陣列
 
         if (error) {
@@ -302,8 +302,8 @@ fetchWinnerEmails(winnersList); // 傳入中獎者陣列
 // 將資料轉換成 CSV 格式
 function convertToCSV(data) {
     // 先建立 CSV 表頭
-    const header = ['Name', 'Email'];
-    const rows = data.map(item => [item.name, item.email]);
+    const header = ['Email'];
+    const rows = data.map(item => [item.email]);
 
     // 將表頭和資料行合併成一個二維陣列
     const csvContent = [header, ...rows].map(e => e.join(",")).join("\n");
