@@ -269,6 +269,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // 這個函數會從 Supabase 獲取中獎者的 email 和 name，並下載 CSV 檔案
 // 修改 fetchWinnerEmails 函數，接收 allWinners 作為參數
+// 這個函數將從 Supabase 獲取中獎者的 email，並生成可下載的 CSV 檔案
 async function fetchWinnerEmails() {
     function getAllWinners() {
         // 使用 flatMap 將所有中獎者的名字展平成一個陣列
@@ -276,18 +277,17 @@ async function fetchWinnerEmails() {
         console.log("allWinners", allWinners);
         return allWinners;
     }
-    
+
     // 呼叫 getAllWinners 並將結果存入變數
     const allWinners = getAllWinners();
-    
+
     try {
         // 查詢中獎者的 email 和 name
         const { data, error } = await supabase
             .from('users') // 假設表格名為 'users'
-            .select('email') // 假設表格包含 'email' 和 'name' 欄位
-            .in('name', allWinners); // 使用傳入的 allWinners 陣列
+            .select('email') // 假設表格包含 'email' 欄位
+            .in('name', allWinners); // 使用 allWinners 陣列
 
-            console.log("allWinners",allWinners)
         if (error) {
             console.error("查詢中獎者失敗:", error);
             return;
@@ -296,7 +296,36 @@ async function fetchWinnerEmails() {
         // 檢查是否有資料
         if (data && data.length > 0) {
             console.log("中獎者資料：", data);
-            // 將資料轉換為 CSV 格式，或執行其他處理
+
+            // 將資料轉換成 CSV 格式
+            function convertToCSV(data) {
+                const header = ['Email']; // CSV 表頭
+                const rows = data.map(item => [item.email]); // 取出 email 欄位
+
+                // 將表頭與資料行合併成一個 CSV 字串
+                const csvContent = [header, ...rows].map(e => e.join(",")).join("\n");
+                return csvContent;
+            }
+
+            // 生成 CSV
+            const csvContent = convertToCSV(data);
+
+            // 下載 CSV 檔案
+            function downloadCSV(csvContent) {
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement('a');
+                const url = URL.createObjectURL(blob);
+
+                link.setAttribute('href', url);
+                link.setAttribute('download', 'winners_emails.csv');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+
+            // 呼叫下載函數
+            downloadCSV(csvContent);
+
         } else {
             console.log("未查詢到任何中獎者資料。");
         }
@@ -305,38 +334,9 @@ async function fetchWinnerEmails() {
     }
 }
 
-
-// 將資料轉換成 CSV 格式
-function convertToCSV(data) {
-    // 先建立 CSV 表頭
-    const header = ['Email'];
-    const rows = data.map(item => [item.email]);
-
-    // 將表頭和資料行合併成一個二維陣列
-    const csvContent = [header, ...rows].map(e => e.join(",")).join("\n");
-
-    return csvContent;
-}
-
-// 下載 CSV 檔案
-function downloadCSV(csvContent) {
-    // 創建一個 Blob 物件來保存 CSV 資料
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-
-    // 創建一個連結並觸發下載
-    const link = document.createElement('a');
-    if (link.download !== undefined) {  // 確保支持下載屬性
-        const url = URL.createObjectURL(blob);
-        link.setAttribute('href', url);
-        link.setAttribute('download', 'winners_emails.csv');
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-}
-
 // 綁定按鈕事件，觸發 fetchWinnerEmails
 document.getElementById("emailBtn").addEventListener("click", fetchWinnerEmails);
+
 
 
 
