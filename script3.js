@@ -252,7 +252,9 @@ function downloadCsv() {
     document.body.removeChild(link);
 }
 
-/*
+
+
+
 import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 
 const supabaseUrl = 'https://dqcwygutsfiepcbathqm.supabase.co'; // 從 Supabase 設定檔取得
@@ -269,7 +271,7 @@ function getAllWinners() {
 
 // 這個函數會從 Supabase 獲取中獎者的 email 和 name，並下載 CSV 檔案
 // 修改 fetchWinnerEmails 函數，接收 allWinners 作為參數
-async function fetchWinnerEmails(allWinners) {
+async function fetchWinnerEmails(winnersList) {
     try {
         // 查詢中獎者的 email 和 name
         const { data, error } = await supabase
@@ -277,6 +279,7 @@ async function fetchWinnerEmails(allWinners) {
             .select('email') // 假設表格包含 'email' 和 'name' 欄位
             .in('name', allWinners); // 使用傳入的 allWinners 陣列
 
+            console.log("allWinners",allWinners)
         if (error) {
             console.error("查詢中獎者失敗:", error);
             return;
@@ -296,7 +299,7 @@ async function fetchWinnerEmails(allWinners) {
 
 // 呼叫 fetchWinnerEmails 時傳入 allWinners
 const winnersList = getAllWinners(); // 獲取所有中獎者
-fetchWinnerEmails(winnersList); // 傳入中獎者陣列
+//fetchWinnerEmails(winnersList); // 傳入中獎者陣列
 
 
 // 將資料轉換成 CSV 格式
@@ -330,4 +333,3 @@ function downloadCSV(csvContent) {
 
 // 綁定按鈕事件，觸發 fetchWinnerEmails
 document.getElementById("emailBtn").addEventListener("click", fetchWinnerEmails);
-*/

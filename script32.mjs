@@ -10,6 +10,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 export async function fetchNameList() {
     try {
         const { data, error } = await supabase.from('users').select('name');
+    
         if (error) {
             console.error('資料讀取錯誤:', error);
             return [];
