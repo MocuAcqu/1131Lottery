@@ -216,12 +216,7 @@ function displayWinners() {
     
     //let allWinners = [];
 
-    function getAllWinners() {
-        // 使用 flatMap 將所有中獎者的名字展平成一個陣列
-        const allWinners = winners.flatMap(winner => winner.winners);
-        console.log("allWinners", allWinners);
-        return allWinners;
-    }
+
     
     
 }
@@ -275,6 +270,13 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 // 這個函數會從 Supabase 獲取中獎者的 email 和 name，並下載 CSV 檔案
 // 修改 fetchWinnerEmails 函數，接收 allWinners 作為參數
 async function fetchWinnerEmails() {
+    function getAllWinners() {
+        // 使用 flatMap 將所有中獎者的名字展平成一個陣列
+        const allWinners = winners.flatMap(winner => winner.winners);
+        console.log("allWinners", allWinners);
+        return allWinners;
+    }
+    
     getAllWinners(); // 獲取所有中獎者
     try {
         // 查詢中獎者的 email 和 name
