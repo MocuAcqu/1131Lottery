@@ -253,6 +253,7 @@ function downloadCsv() {
     document.body.removeChild(link);
 }
 
+/*
 import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 
 const supabaseUrl = 'https://dqcwygutsfiepcbathqm.supabase.co'; // 從 Supabase 設定檔取得
@@ -330,3 +331,4 @@ function downloadCSV(csvContent) {
 
 // 綁定按鈕事件，觸發 fetchWinnerEmails
 document.getElementById("emailBtn").addEventListener("click", fetchWinnerEmails);
+*/
