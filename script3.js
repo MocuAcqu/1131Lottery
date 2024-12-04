@@ -213,6 +213,7 @@ function displayWinners() {
     document.getElementById("closeModalBtn").addEventListener("click", () => {
         document.getElementById("rulesModal").style.display = "none";
     });
+    getAllWinners(); // 獲取所有中獎者
     
 }
 
@@ -265,11 +266,11 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 function getAllWinners() {
     // 使用 map 取得每個獎項的得獎者，並使用 concat 合併成一個新的陣列
     const allWinners = winners.map(winner => winner.winners).flat();
-
+    console.log("allWinners",allWinners)
     return allWinners;
 }
 
-getAllWinners(); // 獲取所有中獎者
+
 
 // 這個函數會從 Supabase 獲取中獎者的 email 和 name，並下載 CSV 檔案
 // 修改 fetchWinnerEmails 函數，接收 allWinners 作為參數
