@@ -213,6 +213,14 @@ function displayWinners() {
     document.getElementById("closeModalBtn").addEventListener("click", () => {
         document.getElementById("rulesModal").style.display = "none";
     });
+    
+    function getAllWinners() {
+        // 使用 map 取得每個獎項的得獎者，並使用 concat 合併成一個新的陣列
+        const allWinners = winners.map(name => `<li>${name}</li>`).flat();
+        console.log("allWinners",allWinners)
+        return allWinners;
+    }
+    
     getAllWinners(); // 獲取所有中獎者
     
 }
@@ -262,13 +270,6 @@ const supabaseUrl = 'https://dqcwygutsfiepcbathqm.supabase.co'; // 從 Supabase 
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxY3d5Z3V0c2ZpZXBjYmF0aHFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEwNzYxODksImV4cCI6MjA0NjY1MjE4OX0.EcmYcKIUZGXOc3PP0ViL58olwi_tCYmFRPlwVe58IAk'; // 從 Supabase 設定檔取得
 
 const supabase = createClient(supabaseUrl, supabaseKey);
-
-function getAllWinners() {
-    // 使用 map 取得每個獎項的得獎者，並使用 concat 合併成一個新的陣列
-    const allWinners = winners.map(winner => winner.winners).flat();
-    console.log("allWinners",allWinners)
-    return allWinners;
-}
 
 
 
