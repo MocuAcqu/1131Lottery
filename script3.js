@@ -214,11 +214,11 @@ function displayWinners() {
         document.getElementById("rulesModal").style.display = "none";
     });
     
-    let allWinners = [];
+    //let allWinners = [];
 
     function getAllWinners() {
         // 使用 flatMap 將所有中獎者的名字展平成一個陣列
-        allWinners = winners.flatMap(winner => winner.winners);
+        const allWinners = winners.flatMap(winner => winner.winners);
         console.log("allWinners", allWinners);
         return allWinners;
     }
