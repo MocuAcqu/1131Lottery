@@ -268,13 +268,14 @@ function getAllWinners() {
 }
 
 // 這個函數會從 Supabase 獲取中獎者的 email 和 name，並下載 CSV 檔案
-async function fetchWinnerEmails() {
+// 修改 fetchWinnerEmails 函數，接收 allWinners 作為參數
+async function fetchWinnerEmails(allWinners) {
     try {
         // 查詢中獎者的 email 和 name
         const { data, error } = await supabase
             .from('users') // 假設表格名為 'users'
             .select('email, name') // 假設表格包含 'email' 和 'name' 欄位
-            .in("name", allWinners); // allWinners 是包含獲獎者名字的陣列
+            .in('name', allWinners); // 使用傳入的 allWinners 陣列
 
         if (error) {
             console.error("查詢中獎者失敗:", error);
@@ -283,18 +284,20 @@ async function fetchWinnerEmails() {
 
         // 檢查是否有資料
         if (data && data.length > 0) {
-            // 將資料轉換為 CSV 格式
-            const csvData = convertToCSV(data);
-
-            // 下載 CSV 檔案
-            downloadCSV(csvData);
+            console.log("中獎者資料：", data);
+            // 將資料轉換為 CSV 格式，或執行其他處理
         } else {
-            console.log("沒有找到中獎者的資料");
+            console.log("未查詢到任何中獎者資料。");
         }
-    } catch (error) {
-        console.error("發生錯誤:", error);
+    } catch (err) {
+        console.error("發生錯誤：", err);
     }
 }
+
+// 呼叫 fetchWinnerEmails 時傳入 allWinners
+const winnersList = getAllWinners(); // 獲取所有中獎者
+fetchWinnerEmails(winnersList); // 傳入中獎者陣列
+
 
 // 將資料轉換成 CSV 格式
 function convertToCSV(data) {
