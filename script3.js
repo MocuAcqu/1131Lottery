@@ -277,7 +277,9 @@ async function fetchWinnerEmails() {
         return allWinners;
     }
     
-    getAllWinners(); // 獲取所有中獎者
+    // 呼叫 getAllWinners 並將結果存入變數
+    const allWinners = getAllWinners();
+    
     try {
         // 查詢中獎者的 email 和 name
         const { data, error } = await supabase
