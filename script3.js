@@ -215,9 +215,9 @@ function displayWinners() {
     });
     
     function getAllWinners() {
-        // 使用 map 取得每個獎項的得獎者，並使用 concat 合併成一個新的陣列
-        const allWinners = winners.map(name => `<li>${name}</li>`).flat();
-        console.log("allWinners",allWinners)
+        // 使用 flatMap 將所有中獎者的名字展平成一個陣列
+        const allWinners = winners.flatMap(winner => winner.winners);
+        console.log("allWinners", allWinners);
         return allWinners;
     }
     
