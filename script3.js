@@ -214,7 +214,6 @@ function displayWinners() {
         document.getElementById("rulesModal").style.display = "none";
     });
     
-    getAllWinners()
 }
 
 // 下載 CSV 檔案
