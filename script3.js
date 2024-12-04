@@ -253,19 +253,19 @@ function downloadCsv() {
     document.body.removeChild(link);
 }
 
-function getAllWinners() {
-    // 使用 map 取得每個獎項的得獎者，並使用 concat 合併成一個新的陣列
-    const allWinners = winners.map(winner => winner.winners).flat();
-
-    return allWinners;
-}
-
 import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
 
 const supabaseUrl = 'https://dqcwygutsfiepcbathqm.supabase.co'; // 從 Supabase 設定檔取得
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxY3d5Z3V0c2ZpZXBjYmF0aHFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEwNzYxODksImV4cCI6MjA0NjY1MjE4OX0.EcmYcKIUZGXOc3PP0ViL58olwi_tCYmFRPlwVe58IAk'; // 從 Supabase 設定檔取得
 
 const supabase = createClient(supabaseUrl, supabaseKey);
+
+function getAllWinners() {
+    // 使用 map 取得每個獎項的得獎者，並使用 concat 合併成一個新的陣列
+    const allWinners = winners.map(winner => winner.winners).flat();
+
+    return allWinners;
+}
 
 // 這個函數會從 Supabase 獲取中獎者的 email 和 name，並下載 CSV 檔案
 async function fetchWinnerEmails() {
