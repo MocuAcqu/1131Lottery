@@ -214,6 +214,8 @@ function displayWinners() {
         document.getElementById("rulesModal").style.display = "none";
     });
     
+    let allWinners = [];
+
     function getAllWinners() {
         // 使用 flatMap 將所有中獎者的名字展平成一個陣列
         const allWinners = winners.flatMap(winner => winner.winners);
