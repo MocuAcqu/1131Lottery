@@ -275,7 +275,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 // 這個函數會從 Supabase 獲取中獎者的 email 和 name，並下載 CSV 檔案
 // 修改 fetchWinnerEmails 函數，接收 allWinners 作為參數
-async function fetchWinnerEmails(allWinners) {
+async function fetchWinnerEmails() {
 
     try {
         // 查詢中獎者的 email 和 name
