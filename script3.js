@@ -269,9 +269,12 @@ function getAllWinners() {
     return allWinners;
 }
 
+const winnersList = getAllWinners(); // 獲取所有中獎者
+
 // 這個函數會從 Supabase 獲取中獎者的 email 和 name，並下載 CSV 檔案
 // 修改 fetchWinnerEmails 函數，接收 allWinners 作為參數
 async function fetchWinnerEmails(winnersList) {
+
     try {
         // 查詢中獎者的 email 和 name
         const { data, error } = await supabase
@@ -296,10 +299,6 @@ async function fetchWinnerEmails(winnersList) {
         console.error("發生錯誤：", err);
     }
 }
-
-// 呼叫 fetchWinnerEmails 時傳入 allWinners
-const winnersList = getAllWinners(); // 獲取所有中獎者
-//fetchWinnerEmails(winnersList); // 傳入中獎者陣列
 
 
 // 將資料轉換成 CSV 格式
